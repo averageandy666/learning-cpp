@@ -27,8 +27,39 @@ int main(){
     // Calculate the GPA for the selected student.
     // Write your code here
 
+    for (const auto& grade : grades) {
+        if (grade.get_student_id() == id) {
+            int course_id = grade.get_course_id();
+            char letter_grade = grade.get_grade();
+            int credits = 0;
+
+            for (const auto& course : courses) {
+                if (course.get_id() == course_id) {
+                    credits = course.get_credits();
+                    break;
+                }
+            }
+
+            float grade_points = 0.0f;
+            switch (letter_grade) {
+                case 'A': grade_points = 4.0f; break;
+                case 'B': grade_points = 3.0f; break;
+                case 'C': grade_points = 2.0f; break;
+                case 'D': grade_points = 1.0f; break;
+                case 'F': grade_points = 0.0f; break;
+            }
+
+            GPA += grade_points * credits;
+        }
+    }
+
     std::string student_str;
-    student_str = students[0].get_name(); // Change this to the selected student's name
+    for (const auto& student : students) {
+        if (student.get_id() == id) {
+            student_str = student.get_name();
+            break;
+        }
+    }
 
     std::cout << "The GPA for " << student_str << " is " << GPA << std::endl;
     
