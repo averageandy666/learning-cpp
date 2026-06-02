@@ -1,6 +1,9 @@
 // Learning C++ 
-// Exercise 03_03
-// Using Classes, by Eduardo Corpeño 
+// Exercise 03_02
+// Classes, by Eduardo Corpeño 
+
+// classes - useful for implementing models
+// contain data and function members
 
 #include <iostream>
 #include <string>
@@ -8,12 +11,16 @@
 enum class cow_purpose {dairy, meat, hide, pet};
 
 class cow{
+    // private: or public: 
 public:
+//constructor
     cow(std::string name_i, int age_i, cow_purpose purpose_i){
         name = name_i;
         age = age_i;
         purpose = purpose_i;
     }
+
+// (getters)
     std::string get_name() const{
         return name;
     }
@@ -23,6 +30,16 @@ public:
     cow_purpose get_purpose() const{
         return purpose;
     }
+    void set_age(int new_age){
+        age = new_age;
+    }
+    void set_name(int new_name){
+        name = new_name;
+    }
+  /* void set_purpose(int new_purpose){
+        purpose = new_purpose;
+    } */
+
 private:
     std::string name;
     int age;
@@ -30,12 +47,9 @@ private:
 };
 
 int main(){
-    cow my_cow;
-    my_cow.age = 5;
-    my_cow.name = "Betsy";
-    my_cow.purpose = cow_purpose::dairy;
-    std::cout << my_cow.name << " is a type-" << (int)my_cow.purpose << " cow." << std::endl;
-    std::cout << my_cow.name << " is " << my_cow.age << " years old." << std::endl;
+    cow my_cow("Hildy", 7, cow_purpose::pet);
+    std::cout << my_cow.get_name() << " is a type-" << (int)my_cow.get_purpose() << " cow." << std::endl;
+    std::cout << my_cow.get_name() << " is " << my_cow.get_age() << " years old." << std::endl;
     
     std::cout << std::endl << std::endl;
     return (0);
