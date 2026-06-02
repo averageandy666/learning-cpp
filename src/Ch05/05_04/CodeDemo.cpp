@@ -1,5 +1,5 @@
 // Learning C++ 
-// Challenge 05_04
+// Challenge Solution 05_05
 // Create a Report Card Function, by Eduardo Corpeño 
 
 #include <iostream>
